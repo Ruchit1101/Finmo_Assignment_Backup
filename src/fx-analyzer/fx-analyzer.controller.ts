@@ -6,7 +6,6 @@ import * as cache from 'memory-cache';
 @Controller('fx-analyzer')
 export class FXAnalyzerController{
        constructor(private readonly fxAnalyzerService: FxAnalyzerService){}
-
        @Get()
        async fetchFXAmount(
               @Query('fromCurrency')
