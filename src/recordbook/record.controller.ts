@@ -3,7 +3,7 @@ import { RecordService } from "./record.service";
 
 
 
-@Controller('record')
+@Controller('accounts')
 export class RecordController{
        constructor(private readonly recordLog: RecordService) {}
 

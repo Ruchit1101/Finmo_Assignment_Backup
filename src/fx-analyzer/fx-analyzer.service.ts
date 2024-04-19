@@ -21,8 +21,8 @@ export class FxAnalyzerService{
                  `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${fromCurrency}&to_currency=${toCurrency}&apikey=${process.env.MY_API_KEY}`
           );
           const rate = res.data['Latest Currency exchange Rate']   ['5. Exchange Rate'];
-          // Fetched rate for 1 min....
-          cache.put(cacheKey,rate,60000);
+          // Fetched rate for 30 sec....
+          cache.put(cacheKey,rate,30000);
           return rate;
        }
        catch(error){

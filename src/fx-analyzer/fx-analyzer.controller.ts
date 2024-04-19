@@ -3,7 +3,7 @@ import { FxAnalyzerService } from "./fx-analyzer.service";
 import { v4 as uuidv4 } from 'uuid';
 import * as cache from 'memory-cache';
 
-@Controller('fx-analyzer')
+@Controller('fx-rates')
 export class FXAnalyzerController{
        constructor(private readonly fxAnalyzerService: FxAnalyzerService){}
        @Get()
@@ -13,6 +13,7 @@ export class FXAnalyzerController{
               @Query('toCurrency')
               toCurrency: string,
        ): Promise<string | null>{
+              
               return this.fxAnalyzerService.fetchFX(fromCurrency, toCurrency);
        }
 
