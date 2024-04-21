@@ -6,12 +6,7 @@ import * as cache from 'memory-cache';
 @Controller('fx-rates')
 export class FxRateController{
        constructor(private readonly fxRateService:FxRatesService){}
-       // @Get()
-       // async fetchFXRate(
-       //        @Query('fromCurrency')fromCurrency:string,
-       //        @Query('toCurrency') toCurrecncy:string): Promise<string | null>{
-       //               return this.fxRateService.fetchFXRate(fromCurrency, toCurrecncy);
-       //        }
+      
        @Get() 
        // TASK 2 FXRATE API FETCHING...
        async fetchFX(): Promise<{
@@ -22,7 +17,7 @@ export class FxRateController{
            try{
               const fxRates = cache.keys().map((key)=>({
                      fromCurrency: key.split('_')[1],
-                     toCurrency: key.split('_'[2]),
+                     toCurrency: key.split('_')[2],
                      rate: cache.get(key),
               }));
               const uniqueId = uuidv4();
@@ -35,7 +30,6 @@ export class FxRateController{
            catch(err){
               console.error(`Failed while fetching FX-RATES ${err}`);
               return null;
-           }
-             
+           }     
        }
 }
