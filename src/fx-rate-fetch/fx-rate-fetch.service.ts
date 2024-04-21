@@ -55,7 +55,9 @@ export class FxRatesService {
                      }
                      // Calculate the converted amount
                      const convertedAmount = amount * conversionRate;
+                     const check = false;
                      return convertedAmount;
+                     
                    
        }
 }
