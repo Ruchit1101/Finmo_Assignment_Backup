@@ -18,6 +18,7 @@ dotenv.config();
   imports: [FxRatesModule, FxConversionModule, FxRateFetchModule, AccountModule,
       TypeOrmModule.forRoot({
         type:'mysql',
+        // All the database related will be here...
       }),
       TypeOrmModule.forFeature([Account])
   ],
