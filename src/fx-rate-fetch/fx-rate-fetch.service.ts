@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import * as cache from 'memory-cache';
 @Injectable()
-export class FxRatesService {
+export class FxRatesFetchService {
        private readonly CACHE_KEY_PRE = 'fxRate_';
 
        // FETCHING FX RATES FROM THE EXTERNAL API AND STORING IT IN CACHE FOR 30 sec...

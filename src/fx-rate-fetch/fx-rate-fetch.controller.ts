@@ -1,9 +1,9 @@
-import { Controller, Get, Query } from "@nestjs/common";
-import { FxRatesService } from "./fx-rate-fetch.service";
+import { Body, Controller, Get, Query } from "@nestjs/common";
+import { FxRatesFetchService } from "./fx-rate-fetch.service";
 
 @Controller('fx-rate-fetch')
 export class FXRateFetchController{
- constructor(private readonly fxRateService:FxRatesService){}
+ constructor(private readonly fxRateService:FxRatesFetchService){}
     @Get ()
        async fetchFXRate(
               @Query ('fromCurrency')fromCurrency:string,
@@ -11,4 +11,6 @@ export class FXRateFetchController{
                      
                      return this.fxRateService.fetchFXRate(fromCurrency, toCurrecncy);
               }
+//    @Post('conversion')
+//    async performConversion(@Body conversion: any): 
 }

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { FxRatesService } from './fx-rate-fetch.service';
+import { FxRatesFetchService } from './fx-rate-fetch.service';
 import { FXRateFetchController } from './fx-rate-fetch.controller';
 
 @Module({
-       providers: [FxRatesService],
+       providers: [FxRatesFetchService],
        controllers: [FXRateFetchController]
 })
 export class FxRateFetchModule {}
