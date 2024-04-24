@@ -16,18 +16,17 @@ export class AccountService{
      async getAccountBalance(
               userId:string,
        ): Promise<{[currency: string]: number}>{
-              const account = await this.accountRepository.findOne({
+              const aacnt = await this.accountRepository.findOne({
                    where: {userId},
                    relations:['balances'],
               });
 
-              if(!account)
+              if(!aacnt)
               {
                  console.error(`No registered user found...`);     
               }
-              // BALANCE FOR ACCOUNT....
              const bal= {};
-             account.balances.forEach((balance)=>{
+             aacnt.balances.forEach((balance)=>{
               bal[balance.currency] = balance.amount
              });
 
