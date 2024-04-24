@@ -3,6 +3,7 @@ import { FXconversionService } from "./fx-conversion.service";
 @Controller('fx-conversion')
 export class FXConversionController{
        constructor(private fxconversionService: FXconversionService) {}
+       // API 3
        @Post()
        // FX CONVERSION API...
        async FXconversion(@Body() resBody: any): Promise<{

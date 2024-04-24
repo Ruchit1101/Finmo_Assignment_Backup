@@ -12,7 +12,7 @@ export class AccountService{
        topUpAccount(currency: string, amount: number): string{
               return `Succefully topped up ${amount} ${currency}`;
        }
-
+//   API 4
      async getAccountBalance(
               userId:string,
        ): Promise<{[currency: string]: number}>{

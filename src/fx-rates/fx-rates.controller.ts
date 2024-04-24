@@ -8,7 +8,7 @@ export class FxRateController{
        constructor(private readonly fxRateService:FxRatesService){}
       
        @Get() 
-       // TASK 2 FXRATE API FETCHING...
+       // API 2...
        async fetchFX(): Promise<{
               uniqueId: string;
               expiry_at: number;
