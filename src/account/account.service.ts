@@ -25,6 +25,7 @@ export class AccountService{
               {
                  console.error(`No registered user found...`);     
               }
+              // BALANCE FOR ACCOUNT....
              const bal= {};
              account.balances.forEach((balance)=>{
               bal[balance.currency] = balance.amount
