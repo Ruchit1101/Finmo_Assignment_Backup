@@ -23,7 +23,7 @@ export class AccountService{
 
               if(!account)
               {
-                 console.error(`User account not found`);     
+                 console.error(`No registered user found...`);     
               }
              const bal= {};
              account.balances.forEach((balance)=>{
