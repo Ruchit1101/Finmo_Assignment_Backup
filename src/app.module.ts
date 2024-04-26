@@ -12,19 +12,43 @@ import { AccountService } from './account/account.service';
 import { FxRatesFetchService } from './fx-rate-fetch/fx-rate-fetch.service';
 import { FXconversionService } from './fx-conversion/fx-conversion.service';
 import { Account } from './account/account.entity';
-
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { INestApplication } from '@nestjs/common';
 dotenv.config();
 @Module({
-  imports: [FxRatesModule, FxConversionModule, FxRateFetchModule, AccountModule,
-      TypeOrmModule.forRoot({
-        type:'mysql',
-        // All the database related will be here...
-      }),
-      TypeOrmModule.forFeature([Account])
+  imports: [ TypeOrmModule.forRoot({
+    type:'mysql',
+    // All the database related will be here...Finmo_Database
+    host: process.env.DB_HOST || "localhost",
+    port: parseInt(process.env.DB_PORT, 10) || 3306,
+    username: process.env.DB_USERNAME || "root",
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || "my_database",
+    entities: [Account],
+    synchronize: true,
+  }),
+  TypeOrmModule.forFeature([Account]),
+  FxRatesModule, FxConversionModule, FxRateFetchModule, AccountModule,
+     
   ],
   controllers: [AppController],
   providers: [AppService, FxRatesService, AccountService, FxRatesFetchService, FXconversionService,
 
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+  }
+
+  static async setupSwagger(app: INestApplication) {
+    const options = new DocumentBuilder()
+      .setTitle('FinmoAPIs')
+      .setDescription('DocumentingAPIs')
+      .setVersion('1.0.0')
+      .build();
+    
+    const document = SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('api', app, document);
+  }
+}
+
