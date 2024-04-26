@@ -19,7 +19,7 @@ dotenv.config();
 @Module({
   imports: [ TypeOrmModule.forRoot({
     type:'mysql',
-    // All the database related will be here...Finmo_Database
+    // All the database related will be here...Finmo_Database...
     host: process.env.DB_HOST || "localhost",
     port: parseInt(process.env.DB_PORT, 10) || 3306,
     username: process.env.DB_USERNAME || "root",
