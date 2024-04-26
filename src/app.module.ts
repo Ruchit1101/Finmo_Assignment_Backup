@@ -14,6 +14,7 @@ import { FXconversionService } from './fx-conversion/fx-conversion.service';
 import { Account } from './account/account.entity';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
+import { Balance } from './account/balance.entity';
 dotenv.config();
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -23,8 +24,8 @@ dotenv.config();
     port: parseInt(process.env.DB_PORT, 10) || 3306,
     username: process.env.DB_USERNAME || "root",
     password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || "my_database",
-    entities: [Account],
+    database: process.env.DB_NAME || "Finmo_Database",
+    entities: [Account, Balance],
     synchronize: true,
   }),
   TypeOrmModule.forFeature([Account]),
